@@ -1,0 +1,27 @@
+{
+  "name": "v3-synilausn",
+  "version": "1.0.0",
+  "description": "Verkefni 3 sýnilausn",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "setup": "node setup.js",
+    "eslint": "eslint *.js",
+    "test": "npm run eslint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "node": "^11.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-plugin-import": "2.15.0",
+    "nodemon": "^1.18.9"
+  }
+}
