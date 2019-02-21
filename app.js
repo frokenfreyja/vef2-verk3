@@ -168,15 +168,11 @@ function errorHandler(error, req, res, next) { // eslint-disable-line
 app.use(notFoundHandler);
 app.use(errorHandler);
 
-/*
 const {
   PORT: port = 3000,
   HOST: host = '127.0.0.1',
 } = process.env;
-*/
-const hostname = '127.0.0.1';
-const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.info(`Server running at http://${hostname}:${port}/`);
+  console.info(`Server running at http://${host}:${port}/`);
 });
