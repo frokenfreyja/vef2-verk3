@@ -12,14 +12,7 @@ const admin = require('./admin');
 const applications = require('./applications');
 const users = require('./users');
 
-const sessionSecret = process.env.SESSION_SECRET;
-
 /* todo sækja stillingar úr env */
-if (!sessionSecret) {
-  console.error('Add SESSION_SECRET to .env');
-  process.exit(1);
-}
-
 const {
   PORT: port = 3000,
   SESSION_SECRET: sessionSecret = 'notaðu .env!',
@@ -175,10 +168,6 @@ function errorHandler(error, req, res, next) { // eslint-disable-line
 
 app.use(notFoundHandler);
 app.use(errorHandler);
-
-
-const hostname = '127.0.0.1';
-const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.info(`Server running at http://${hostname}:${port}/`);

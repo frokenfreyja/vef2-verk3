@@ -186,7 +186,6 @@ async function registerPost(req, res, next) {
  * @param {object} res Response hlutur
  */
 function thanks2(req, res) {
-  console.log('er i thanks2 i register.js');
   return res.render('thanks2', { title: 'Takk fyrir nýskráninguna', page: 'thanks2' });
 }
 
