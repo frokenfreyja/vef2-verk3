@@ -10,6 +10,26 @@
   </head>
   <body>
     <header>
-
+      <% if (locals.login === true) { %>
+        <div class="header__main">
+          <div class="header__navbar">
+            <a href='/'>Atvinnuumsókn</a>
+            <a href='/applications'>Umsóknir</a>
+            <a href='/admin'>Notendur</a>
+          </div>
+          <div class="logout">
+            <p><%= locals.user %></p>
+            <a href="/logout">Útskrá</a>
+          </div>
+        </div>
+      <% } else { %> 
+        <div class="header__main">
+          <div class="header__navbar">
+            <a href="/">Atvinnuumsókn</a>
+            <a href="/login">Innskráning</a>
+            <a href="/register">Nýskráning</a> 
+          </div>
+        </div>
+      <% } %>
     </header>
     <main>

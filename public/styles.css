@@ -20,7 +20,8 @@ html { /* stylelint-disable-line */
 input,
 select,
 textarea,
-button {
+button,
+header {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
@@ -38,6 +39,14 @@ h2 {
 
 main {
   margin: 2rem;
+}
+.header__main {
+  margin: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__navbar {
 }
 
 .field {

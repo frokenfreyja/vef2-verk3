@@ -50,6 +50,7 @@ async function deleteRow(id) {
   return query(q, id);
 }
 
+
 module.exports = {
   query,
   insert,

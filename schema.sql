@@ -11,5 +11,10 @@ CREATE TABLE applications (
 );
 
 CREATE TABLE users (
-  /* todo skema */
+  id serial primary key, 
+  username varchar(128) not null unique,
+  password varchar(128) not null, 
+  name varchar(128) not null,
+  email varchar(256) not null,
+  admin boolean default false
 );

@@ -1,0 +1,36 @@
+<%- include('header') -%>
+
+<h1>Notendur</h1>
+
+<div class="admin">
+  <% if (list.length === 0) { %>
+    <p>Engir notendur.</p>
+  <% } %>
+  <form method="post" action="/admin/updateAdmin">
+  <table>
+    <tr>
+      <% if (locals.isAdmin === true ) { %>
+      <th>Stjórnandi?</th>
+      <% } %>
+      <th>Notendanafn</th>
+      <th>Nafn</th>
+      <th>Netfang</th>
+    </tr>
+    <% list.forEach((user) => { %>
+    <tr>
+      <% if (locals.isAdmin === true ) { %>
+      <td><input type="checkbox" name="admin[]" value="<%= user.id %>"></td>
+      <% } %>
+      <td><%= user.username %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+    </tr>
+    <% }); %>
+  </table>
+</div>
+<% if (locals.isAdmin === true ) { %>
+  <button>Uppfæra stjórnendur</button>
+<% } %>
+</form>
+
+<%- include('footer') -%>

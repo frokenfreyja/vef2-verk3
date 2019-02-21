@@ -1,8 +1,12 @@
 
 <%- include('header') -%>
 
-<h1>Umsókn móttekin</h1>
+<h1><%= title %></h1>
 
-<p>Takk fyrir. Við höfum samband.</p>
+<p><%= underTitle %></p>
+
+<% if (forwardLogin) { %>
+  <p><%= forwardLogin %><a href="/login">hér</a></p>
+<% } %>
 
 <%- include('footer') -%>
