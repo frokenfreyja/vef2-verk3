@@ -12,24 +12,28 @@ const admin = require('./admin');
 const applications = require('./applications');
 const users = require('./users');
 
-/* todo sækja stillingar úr env */
-const {
-  PORT: port = 3000,
-  SESSION_SECRET: sessionSecret = 'notaðu .env!',
-} = process.env;
-
 const app = express();
 
-/* todo stilla session og passport */
+const sessionSecret = process.env.SESSION_SECRET || 'fj489jfadkljv';
+
+if (!sessionSecret) {
+  console.error('Add SESSION_SECRET to .env');
+  process.exit(1);
+}
+
+const {
+  PORT: port = 3000,
+  HOST: host = '127.0.0.1',
+} = process.env;
 
 app.use(express.urlencoded({ extended: true }));
 
-// Passport mun verða notað með session
 app.use(session({
   secret: sessionSecret,
   resave: false,
   saveUninitialized: false,
 }));
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -170,5 +174,5 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 app.listen(port, () => {
-  console.info(`Server running at http://localhost:${port}/`);
+  console.info(`Server running at http://${host}:${port}/`);
 });
