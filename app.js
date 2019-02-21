@@ -5,14 +5,14 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const { Strategy } = require('passport-local');
+
 const apply = require('./apply');
 const register = require('./register');
+const { registerPost } = require('./register');
 const login = require('./login');
 const admin = require('./admin');
 const applications = require('./applications');
 const users = require('./users');
-
-const app = express();
 
 const sessionSecret = process.env.SESSION_SECRET || 'fj489jfadkljv';
 
@@ -20,6 +20,8 @@ if (!sessionSecret) {
   console.error('Add SESSION_SECRET to .env');
   process.exit(1);
 }
+
+const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -137,11 +139,11 @@ function ensureLoggedIn(req, res, next) {
   return res.redirect('/login');
 }
 
-app.get('/admin', ensureLoggedIn, (req, res, next) => {
+app.get('/applications', ensureLoggedIn, (req, res, next) => {
   return next();
 });
 
-app.get('/applications', ensureLoggedIn, (req, res, next) => {
+app.get('/admin', ensureLoggedIn, (req, res, next) => {
   return next();
 });
 
@@ -153,8 +155,8 @@ app.get('/logout', (req, res) => {
 app.use('/', apply);
 app.use('/register', register);
 app.use('/applications', applications);
-app.use('/login', login);
 app.use('/admin', admin);
+app.use('/login', login);
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
   res.status(404).render('error', { page: 'error', title: '404', error: '404 fannst ekki' });
