@@ -20,6 +20,11 @@ if (!sessionSecret) {
   process.exit(1);
 }
 
+const {
+  PORT: port = 3000,
+  SESSION_SECRET: sessionSecret = 'notaðu .env!',
+} = process.env;
+
 const app = express();
 
 /* todo stilla session og passport */
@@ -173,8 +178,8 @@ app.use(errorHandler);
 
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-app.listen(port, hostname, () => {
+app.listen(port, () => {
   console.info(`Server running at http://${hostname}:${port}/`);
 });
