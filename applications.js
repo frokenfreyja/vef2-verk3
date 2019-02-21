@@ -27,6 +27,7 @@ async function applications(req, res) {
   const data = {
     title: 'Umsóknir',
     list,
+    page: 'applications',
   };
 
   return res.render('applications', data);

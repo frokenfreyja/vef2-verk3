@@ -115,7 +115,9 @@ app.use((req, res, next) => {
     res.locals.login = req.isAuthenticated();
     res.locals.user = req.user.username;
     res.locals.isAdmin = req.user.admin;
+    res.locals.page = req.body.url;
   }
+  console.log('SÍÐA: ', req.page);
   res.locals.showLogin = true;
   next();
 });
@@ -140,6 +142,7 @@ function ensureLoggedIn(req, res, next) {
   }
   return res.redirect('/login');
 }
+
 app.get('/admin', ensureLoggedIn, (req, res, next) => {
   return next();
 });

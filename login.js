@@ -19,6 +19,14 @@ function login(req, res) {
   res.render('login', data);
 }
 
-router.get('/', login);
+router.get('/', login, (req, res) => {
+  let message = '';
+  console.log('MESSAGE: ', message);
+  if (req.session.messages && req.session.messages.length > 0) {
+    message = req.session.messages.join(', ');
+    req.session.messages = [];
+    res.locals.message = message;
+  }
+});
 
 module.exports = router;

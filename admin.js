@@ -27,6 +27,7 @@ async function admin(req, res) {
   const data = {
     title: 'Notendur',
     list,
+    page: 'admin',
   };
 
   return res.render('admin', data);

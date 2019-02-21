@@ -13,9 +13,23 @@
       <% if (locals.login === true) { %>
         <div class="header__main">
           <div class="header__navbar">
-            <a href='/'>Atvinnuumsókn</a>
-            <a href='/applications'>Umsóknir</a>
-            <a href='/admin'>Notendur</a>
+            <% if (page === 'apply') { %>
+              <a href='/'class="active__page">Atvinnuumsókn</a>
+            <% } else { %>   
+              <a href='/' class="nonactive__page">Atvinnuumsókn</a>
+            <% } %>
+
+            <% if (page === 'applications') { %>
+              <a href='/applications' class="active__page">Umsóknir</a>
+            <% } else { %>
+              <a href='/applications' class="nonactive__page">Umsóknir</a>
+              <% } %> 
+
+            <% if (page === 'admin') { %>
+              <a href='/admin' class="active__page">Notendur</a>
+            <% } else { %>
+              <a href='/admin' class="nonactive__page">Notendur</a>
+            <% } %>
           </div>
           <div class="logout">
             <p><%= locals.user %></p>
@@ -25,9 +39,23 @@
       <% } else { %> 
         <div class="header__main">
           <div class="header__navbar">
-            <a href="/">Atvinnuumsókn</a>
-            <a href="/login">Innskráning</a>
-            <a href="/register">Nýskráning</a> 
+            <% if (page === 'apply') { %>
+              <a href="/" class="active__page">Atvinnuumsókn</a>
+            <% } else { %>
+              <a href="/" class="nonactive__page">Atvinnuumsókn</a>
+            <% } %>
+
+            <% if (page === 'login') { %>
+              <a href="/login" class="active__page">Innskráning</a>
+            <% } else { %>
+              <a href="/login" class="nonactive__page">Innskráning</a>
+            <% } %>
+
+            <% if (page === 'register') { %>
+              <a href="/register" class="active__page">Nýskráning</a>
+            <% } else { %>
+              <a href="/register" class="nonactive__page">Nýskráning</a>
+            <% } %>
           </div>
         </div>
       <% } %>

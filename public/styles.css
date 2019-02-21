@@ -59,6 +59,13 @@ main {
   font-size: 1.375rem;
 }
 
+.active__page {
+  text-decoration: underline;
+}
+.nonactive__page {
+  text-decoration: none;
+}
+
 .field input,
 .field textarea {
   padding: 8px;
