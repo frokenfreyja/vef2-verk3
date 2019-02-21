@@ -4,10 +4,30 @@ const { check, validationResult } = require('express-validator/check');
 const { sanitize } = require('express-validator/filter');
 
 const { createUser, findByUsername } = require('./users');
-const passport = require('passport');
 
 
 const router = express.Router();
+
+/**
+ * Route handler fyrir form umsóknar.
+ *
+ * @param {object} req Request hlutur
+ * @param {object} res Response hlutur
+ * @returns {string} Formi fyrir umsókn
+ */
+function register(req, res) {
+  const data = {
+    title: 'Nýskráning',
+    name: '',
+    email: '',
+    username: '',
+    password: '',
+    password2: '',
+    errors: [],
+    page: 'register',
+  };
+  res.render('register', data);
+}
 
 /**
  * Higher-order fall sem umlykur async middleware með villumeðhöndlun.
@@ -90,27 +110,6 @@ const sanitazions = [
   sanitize('username').trim().escape(),
   sanitizeXss('username'),
 ];
-
-/**
- * Route handler fyrir form umsóknar.
- *
- * @param {object} req Request hlutur
- * @param {object} res Response hlutur
- * @returns {string} Formi fyrir umsókn
- */
-function register(req, res) {
-  const data = {
-    title: 'Nýskráning',
-    name: '',
-    email: '',
-    username: '',
-    password: '',
-    password2: '',
-    errors: [],
-    page: 'register',
-  };
-  res.render('register', data);
-}
 
 /**
  * Route handler sem athugar stöðu á umsókn og birtir villur ef einhverjar,
