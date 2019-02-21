@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 
-const connectionString = process.env.DATABASE_URL;
+const connectionString = process.env.DATABASE_URL || 'postgres://:@localhost/v3';
 
 async function query(q, values = []) {
   const client = new Client({ connectionString });
