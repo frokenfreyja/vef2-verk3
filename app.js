@@ -15,7 +15,6 @@ const users = require('./users');
 const sessionSecret = process.env.SESSION_SECRET;
 
 /* todo sækja stillingar úr env */
-
 if (!sessionSecret) {
   console.error('Add SESSION_SECRET to .env');
   process.exit(1);
@@ -115,9 +114,7 @@ app.use((req, res, next) => {
     res.locals.login = req.isAuthenticated();
     res.locals.user = req.user.username;
     res.locals.isAdmin = req.user.admin;
-    res.locals.page = req.body.url;
   }
-  console.log('SÍÐA: ', req.page);
   res.locals.showLogin = true;
   next();
 });

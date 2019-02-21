@@ -176,7 +176,7 @@ async function registerPost(req, res, next) {
   };
 
   await createUser(data.username, data.password, data.name, data.email);
-  return res.redirect('/register/thanks');
+  return res.redirect('/register/thanks2');
 }
 
 /**
@@ -185,12 +185,13 @@ async function registerPost(req, res, next) {
  * @param {object} req Request hlutur
  * @param {object} res Response hlutur
  */
-function thanks(req, res) {
-  return res.render('thanks', { title: 'Takk fyrir nýskráninguna', underTitle: '', forwardLogin: 'Þú getur skráð þig inn ' });
+function thanks2(req, res) {
+  console.log('er i thanks2 i register.js');
+  return res.render('thanks2', { title: 'Takk fyrir nýskráninguna', page: 'thanks2' });
 }
 
 router.get('/', register);
-router.get('/thanks', thanks);
+router.get('/thanks2', thanks2);
 
 router.post(
   '/',

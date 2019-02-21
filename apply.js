@@ -186,7 +186,8 @@ async function formPost(req, res) {
  * @param {object} res Response hlutur
  */
 function thanks(req, res) {
-  return res.render('thanks', { title: 'Takk fyrir umsóknina', underTitle: 'Takk fyrir. Við höfum samband.', forwardLogin: '' });
+  console.log('er i thanks i apply.js');
+  return res.render('thanks', { title: 'Takk fyrir umsóknina', underTitle: 'Takk fyrir. Við höfum samband.', forwardLogin: '', page: 'thanks' });
 }
 
 router.get('/', form);
