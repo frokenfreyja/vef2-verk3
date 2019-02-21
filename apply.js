@@ -5,6 +5,28 @@ const { sanitize } = require('express-validator/filter');
 
 const { insert } = require('./db');
 
+const router = express.Router();
+/**
+ * Route handler fyrir form umsóknar.
+ *
+ * @param {object} req Request hlutur
+ * @param {object} res Response hlutur
+ * @returns {string} Formi fyrir umsókn
+ */
+function form(req, res) {
+  const data = {
+    title: 'Atvinnuumsókn',
+    name: '',
+    email: '',
+    phone: '',
+    text: '',
+    job: '',
+    errors: [],
+    page: 'apply',
+  };
+  res.render('form', data);
+}
+
 /**
  * Higher-order fall sem umlykur async middleware með villumeðhöndlun.
  *
@@ -36,8 +58,6 @@ function sanitizeXss(fieldName) {
     next();
   };
 }
-
-const router = express.Router();
 
 // Fylki af öllum validations fyrir umsókn
 const validations = [
@@ -85,27 +105,6 @@ const sanitazions = [
   sanitizeXss('job'),
   sanitize('job').trim().escape(),
 ];
-
-/**
- * Route handler fyrir form umsóknar.
- *
- * @param {object} req Request hlutur
- * @param {object} res Response hlutur
- * @returns {string} Formi fyrir umsókn
- */
-function form(req, res) {
-  const data = {
-    title: 'Atvinnuumsókn',
-    name: '',
-    email: '',
-    phone: '',
-    text: '',
-    job: '',
-    errors: [],
-    page: 'apply',
-  };
-  res.render('form', data);
-}
 
 /**
  * Route handler sem athugar stöðu á umsókn og birtir villur ef einhverjar,
@@ -186,7 +185,7 @@ async function formPost(req, res) {
  * @param {object} res Response hlutur
  */
 function thanks(req, res) {
-  return res.render('thanks', { title: 'Takk fyrir umsóknina', underTitle: 'Takk fyrir. Við höfum samband.', forwardLogin: '', page: 'thanks' });
+  return res.render('thanks', { title: 'Takk fyrir umsóknina', page: 'thanks' });
 }
 
 router.get('/', form);
