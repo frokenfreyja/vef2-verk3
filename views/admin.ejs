@@ -1,13 +1,12 @@
 <%- include('header') -%>
 
-<h1>Notendur</h1>
-
 <div class="admin">
+<h1><%= title %></h1>
   <% if (list.length === 0) { %>
     <p>Engir notendur.</p>
   <% } %>
   <form method="post" action="/admin/updateAdmin">
-  <table>
+  <table class="table">
     <tr>
       <% if (locals.isAdmin === true ) { %>
       <th>Stjórnandi?</th>
@@ -27,10 +26,10 @@
     </tr>
     <% }); %>
   </table>
-</div>
 <% if (locals.isAdmin === true ) { %>
   <button>Uppfæra stjórnendur</button>
 <% } %>
 </form>
+</div>
 
 <%- include('footer') -%>

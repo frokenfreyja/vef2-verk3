@@ -40,13 +40,17 @@ h2 {
 main {
   margin: 2rem;
 }
-.header__main {
-  margin: 2rem;
+.content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column-reverse;
 }
 
-.header__navbar {
+.header__main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+  margin-bottom: 0;
+  flex-direction: column;
 }
 
 .field {
@@ -61,9 +65,12 @@ main {
 
 .active__page {
   text-decoration: underline;
+  font-weight: bold;
+  color: black;
 }
 .nonactive__page {
   text-decoration: none;
+  color: #282828;
 }
 
 .field input,
@@ -141,8 +148,27 @@ button:hover {
   align-items: center;
 }
 
+/* TAFLA */
+.table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+th, td {
+  padding: 15px;
+}
+tr:nth-child(even) { 
+  background-color: #E8E8E8;
+}
 
 @media (min-width: 600px) {
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+
   .field {
     flex-direction: row;
   }
@@ -157,5 +183,13 @@ button:hover {
 
   .field input {
     flex: 1;
+  }
+
+  .header__main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0;
+    margin-bottom: 3em;
+    flex-direction: row;
   }
 }
