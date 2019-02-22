@@ -10,11 +10,11 @@
     <input type="password" name="password" id="password" value="<%= password %>" class="">
   </div>
 
-  <% if (err !== '') { %>
+  <% if (errors !== '') { %>
     <h2>Vandræði við að innskrá:</h2>
     <ul class="error_list">
       <li>
-        <%- err %>
+        <%- errors %>
       </li>
     </ul>
     <% }%>

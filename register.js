@@ -145,6 +145,7 @@ function showErrors(req, res, next) {
     const errors = validation.array();
     data.errors = errors;
     data.title = 'Nýskráning – vandræði';
+    data.page = 'register';
     return res.render('register', data);
   }
   return next();

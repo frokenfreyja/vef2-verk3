@@ -21,8 +21,7 @@ function login(req, res) {
     title: 'Innskráning',
     username: '',
     password: '',
-    err: message,
-    errors: [],
+    errors: message,
     page: 'login',
   };
   res.render('login', data);

@@ -140,6 +140,7 @@ function showErrors(req, res, next) {
     const errors = validation.array();
     data.errors = errors;
     data.title = 'Avinnuumsókn – vandræði';
+    data.page = 'apply';
 
     return res.render('form', data);
   }

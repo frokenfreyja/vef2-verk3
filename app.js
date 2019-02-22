@@ -61,13 +61,7 @@ app.locals.isInvalid = isInvalid;
  */
 async function strat(username, password, done) {
   try {
-    const adminUser = await users.isAdmin(username);
-    if (adminUser) {
-      console.log('Þessi er admin: ', adminUser.username);
-    }
-
     const user = await users.findByUsername(username);
-    console.log(user);
 
     if (!user) {
       return done(null, false, { message: 'Vitlaust notendanafn' });
@@ -171,7 +165,7 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 const {
-  PORT: port = 3000,
+  PORT: port = 3001,
   HOST: host = '127.0.0.1',
 } = process.env;
 
