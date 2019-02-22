@@ -8,7 +8,6 @@ const { Strategy } = require('passport-local');
 
 const apply = require('./apply');
 const register = require('./register');
-const { registerPost } = require('./register');
 const login = require('./login');
 const admin = require('./admin');
 const applications = require('./applications');
@@ -122,7 +121,7 @@ app.post(
   '/login',
   // Þetta notar strat að ofan til að skrá notanda inn
   passport.authenticate('local', {
-    failureMessage: 'Notandi eða lykilorð vitlaust.',
+    failureMessage: 'Notendanafn eða lykilorð vitlaust.',
     failureRedirect: '/login',
   }),
 
@@ -157,6 +156,7 @@ app.use('/register', register);
 app.use('/applications', applications);
 app.use('/admin', admin);
 app.use('/login', login);
+
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
   res.status(404).render('error', { page: 'error', title: '404', error: '404 fannst ekki' });

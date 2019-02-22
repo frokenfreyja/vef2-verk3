@@ -10,53 +10,25 @@
   </head>
   <body>
     <header>
-      <% if (locals.login === true) { %>
+      <% if (locals.user) { %>
         <div class="header__main">
           <div class="header__navbar">
 
-            <% if (page === 'apply') { %>
-              <a href='/'class="active__page">Atvinnuumsókn</a>
-            <% } else { %>   
-              <a href='/' class="nonactive__page">Atvinnuumsókn</a>
-            <% } %>
-
-            <% if (page === 'applications') { %>
-              <a href='/applications' class="active__page">Umsóknir</a>
-            <% } else { %>
-              <a href='/applications' class="nonactive__page">Umsóknir</a>
-              <% } %> 
-
-            <% if (page === 'admin') { %>
-              <a href='/admin' class="active__page">Notendur</a>
-            <% } else { %>
-              <a href='/admin' class="nonactive__page">Notendur</a>
-            <% } %>
+              <a class="<%= page === 'apply' ? 'active__page' : 'nonactive__page' %>" href='./'>Atvinnuumsókn</a>
+              <a class="<%= page === 'applications' ? 'active__page' : 'nonactive__page' %>" href='./applications'>Umsóknir</a>
+              <a class="<%= page === 'admin' ? 'active__page' : 'nonactive__page' %>" href='./admin'>Notendur</a>
           </div>
           <div class="logout">
             <p><%= locals.user %></p>
             <a href="/logout">Útskrá</a>
           </div>
         </div>
-      <% } else if (locals.login !== true) { %> 
+      <% } else { %> 
         <div class="header__main">
           <div class="header__navbar">
-            <% if (page === 'apply') { %>
-              <a href="/" class="active__page">Atvinnuumsókn</a>
-            <% } else { %>
-              <a href="/" class="nonactive__page">Atvinnuumsókn</a>
-            <% } %>
-
-            <% if (page === 'login') { %>
-              <a href="/login" class="active__page">Innskráning</a>
-            <% } else { %>
-              <a href="/login" class="nonactive__page">Innskráning</a>
-            <% } %>
-
-            <% if (page === 'register') { %>
-              <a href="/register" class="active__page">Nýskráning</a>
-            <% } else { %>
-              <a href="/register" class="nonactive__page">Nýskráning</a>
-            <% } %>
+            <a class="<%= page === 'apply' ? 'active__page' : 'nonactive__page' %>" href='./'>Atvinnuumsókn</a>
+            <a class="<%= page === 'login' ? 'active__page' : 'nonactive__page' %>" href='./login'>Innskráning</a>
+            <a class="<%= page === 'register' ? 'active__page' : 'nonactive__page' %>" href='./register'>Nýskráning</a>
           </div>
         </div>
       <% } %>

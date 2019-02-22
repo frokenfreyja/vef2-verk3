@@ -9,24 +9,25 @@ const router = express.Router();
  * @returns {string} Formi fyrir umsókn
  */
 function login(req, res) {
+  let message = '';
+
+  // Athugum hvort einhver skilaboð séu til í session, ef svo er birtum þau
+  // og hreinsum skilaboð
+  if (req.session.messages && req.session.messages.length > 0) {
+    message = req.session.messages.join(', ');
+    req.session.messages = [];
+  }
   const data = {
     title: 'Innskráning',
     username: '',
     password: '',
+    err: message,
     errors: [],
     page: 'login',
   };
   res.render('login', data);
 }
 
-router.get('/', login, (req, res) => {
-  let message = '';
-  console.log('MESSAGE: ', message);
-  if (req.session.messages && req.session.messages.length > 0) {
-    message = req.session.messages.join(', ');
-    req.session.messages = [];
-    res.locals.message = message;
-  }
-});
+router.get('/', login);
 
 module.exports = router;

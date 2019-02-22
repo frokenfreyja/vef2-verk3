@@ -2,7 +2,7 @@
   "name": "v3-synilausn",
   "version": "1.0.0",
   "description": "Verkefni 3 sýnilausn",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "setup": "node setup.js",
@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.4",
+    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "dotenv": "^6.2.0",
     "ejs": "^2.6.1",
@@ -25,6 +26,7 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^7.8.1",
+    "session-manager": "^0.1.0",
     "xss": "^1.0.3"
   },
   "devDependencies": {
