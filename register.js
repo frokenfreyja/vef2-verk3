@@ -158,7 +158,7 @@ function showErrors(req, res, next) {
  * @param {object} req Request hlutur
  * @param {object} res Response hlutur
  */
-async function registerPost(req, res, next) {
+async function registerPost(req, res) {
   const {
     body: {
       username = '',

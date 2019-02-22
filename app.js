@@ -132,11 +132,11 @@ function ensureLoggedIn(req, res, next) {
   return res.redirect('/login');
 }
 
-app.get('/applications', ensureLoggedIn, (req, res, next) => {
+app.get('/applications', ensureLoggedIn, (req, res, next) => { /* eslint-disable-line */
   return next();
 });
 
-app.get('/admin', ensureLoggedIn, (req, res, next) => {
+app.get('/admin', ensureLoggedIn, (req, res, next) => { /* eslint-disable-line */
   return next();
 });
 
