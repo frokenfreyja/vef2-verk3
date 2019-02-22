@@ -93,7 +93,10 @@ async function makeAdmin(id) {
   SET admin = true
   WHERE id = $1`;
 
-  return query(q, id);
+  if (id) {
+    return query(q, id);
+  }
+  return false;
 }
 
 
