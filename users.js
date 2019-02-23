@@ -87,17 +87,22 @@ async function isAdmin(username) {
   return null;
 }
 
-async function makeAdmin(id) {
+function delay() {
+  return new Promise(resolve => setTimeout(resolve, 300));
+}
+
+async function delayedLog(id) {
+  await delay();
   const q = `
   UPDATE users
   SET admin = true
   WHERE id = $1`;
+  await query(q, [id]);
+}
 
-  if (id) {
-    for (let i = 0; i < id.length; i += 1) {
-      await query(q, [id[i]]); /* eslint-disable-line */
-    }
-  }
+async function makeAdmin(id) {
+  const promises = id.map(delayedLog);
+  await Promise.all(promises);
   return false;
 }
 

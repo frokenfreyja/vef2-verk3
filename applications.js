@@ -42,9 +42,7 @@ async function applications(req, res) {
  */
 async function processApplication(req, res) {
   const { id } = req.body;
-
   await update([id]);
-
   return res.redirect('/applications');
 }
 

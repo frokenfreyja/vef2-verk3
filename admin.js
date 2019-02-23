@@ -43,7 +43,9 @@ async function admin(req, res) {
 async function updateAdmin(req, res) {
   const adminId = req.body.admin;
 
-  await makeAdmin(adminId);
+  if (adminId) {
+    await makeAdmin(adminId);
+  }
 
   return res.redirect('/admin');
 }
