@@ -94,7 +94,9 @@ async function makeAdmin(id) {
   WHERE id = $1`;
 
   if (id) {
-    return query(q, id);
+    for (let i = 0; i < id.length; i += 1) {
+      await query(q, [id[i]]); /* eslint-disable-line */
+    }
   }
   return false;
 }
